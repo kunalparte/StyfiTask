@@ -1,11 +1,13 @@
 package com.example.kunalparte.styfitask.DataList.views;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.kunalparte.styfitask.DataList.api.ApiResponseInterfaceImpl;
 import com.example.kunalparte.styfitask.DataList.PresenterImpl.PresenterImpl;
@@ -20,7 +22,7 @@ import com.example.kunalparte.styfitask.Utils.ScrollToPaginateListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataListActivity extends BaseActivity implements MainPresenterInterface.ViewInterface{
+public class DataListActivity extends BaseActivity implements MainPresenterInterface.ViewInterface, SwipeRefreshLayout.OnRefreshListener {
 
     private RecyclerView dataRecyclerView;
     private LinearLayoutManager linearLayoutManager;
@@ -37,22 +39,31 @@ public class DataListActivity extends BaseActivity implements MainPresenterInter
 
     private ProgressBar progressBar;
 
+    private SwipeRefreshLayout swipeRefreshLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        init();
-        onRecyclerScrolled();
+            init();
+            onRecyclerScrolled();
+
     }
 
-    public void init(){
-        getSupportActionBar().setTitle("Hello, "+ getIntent().getStringExtra(Consts.NAME_KEY));
+    public void init() {
+        getSupportActionBar().setTitle("Hello, " + getIntent().getStringExtra(Consts.NAME_KEY));
         dataRecyclerView = (RecyclerView) findViewById(R.id.dataList);
         progressBar = (ProgressBar) findViewById(R.id.footer);
-        presenter = new PresenterImpl(this,new ApiResponseInterfaceImpl());
-        presenter.requestDataFromServer(pageCount);
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLay);
+        presenter = new PresenterImpl(this, new ApiResponseInterfaceImpl());
         linearLayoutManager = new LinearLayoutManager(this);
         dataRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        swipeRefreshLayout.setOnRefreshListener(this);
+        if (Consts.isNetworkAvailable(this)) {
+            presenter.requestDataFromServer(pageCount);
+        } else {
+            Toast.makeText(this, "Please Connect to Internet", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void onRecyclerScrolled(){
@@ -103,6 +114,9 @@ public class DataListActivity extends BaseActivity implements MainPresenterInter
         }
         dataItemListAdapter.notifyDataSetChanged();
         isLoading = false;
+        if (swipeRefreshLayout.isRefreshing()){
+            swipeRefreshLayout.setRefreshing(false);
+        }
 
     }
 
@@ -119,5 +133,11 @@ public class DataListActivity extends BaseActivity implements MainPresenterInter
     @Override
     public void onBackPressed(){
         super.onBackPressed();
+    }
+
+    @Override
+    public void onRefresh() {
+        pageCount = 1;
+        presenter.requestDataFromServer(pageCount);
     }
 }

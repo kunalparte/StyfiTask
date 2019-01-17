@@ -32,17 +32,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        if (Consts.isNetworkAvailable(this)) {
             if (AppPreferences.getInstance(this).getLoginToken().isEmpty()) {
                 init();
             } else {
                 startActivity(new Intent(this, DataListActivity.class));
                 finish();
             }
-        }else {
-            Toast.makeText(this,"Please Connect to Internet", Toast.LENGTH_SHORT).show();
-        }
-
     }
 
     public void init(){
@@ -73,7 +68,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         switch (v.getId()){
             case R.id.googleCustomButton:
             case R.id.sign_in_button:
+                if (Consts.isNetworkAvailable(this)) {
                 signIn();
+                }else {
+                    Toast.makeText(this,"Please Connect to Internet", Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }

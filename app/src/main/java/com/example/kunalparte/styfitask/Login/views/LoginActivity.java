@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.kunalparte.styfitask.Utils.AppPreferences;
 import com.example.kunalparte.styfitask.Utils.BaseActivity;
@@ -31,12 +32,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        if (AppPreferences.getInstance(this).getLoginToken().isEmpty()) {
-            init();
+        if (Consts.isNetworkAvailable(this)) {
+            if (AppPreferences.getInstance(this).getLoginToken().isEmpty()) {
+                init();
+            } else {
+                startActivity(new Intent(this, DataListActivity.class));
+                finish();
+            }
         }else {
-            startActivity(new Intent(this, DataListActivity.class));
-            finish();
+            Toast.makeText(this,"Please Connect to Internet", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     public void init(){

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login.views.LoginActivity"
+    android:background="@drawable/styfi_login_banner">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="STYFI"
+        android:textColor="#dd4b39"
+        android:textSize="58dp"
+        android:textStyle="bold|italic"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="62dp"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:id="@+id/googleCustomButton"
+        android:text="Sign In With Google"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:background="#dd4b39"
+        android:textColor="#ffff"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="32dp"/>
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="32dp"/>
+
+</RelativeLayout>

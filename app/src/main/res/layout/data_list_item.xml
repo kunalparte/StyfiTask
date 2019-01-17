@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffff"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:elevation="4dp">
+
+    <ImageView
+        android:layout_width="136dp"
+        android:layout_height="96dp"
+        android:layout_margin="8dp"
+        android:id="@+id/dataItemImageView"
+        android:layout_alignParentLeft="true"
+        android:background="#eae4e4" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/dataItemImageView"
+        android:orientation="vertical"
+        android:layout_margin="8dp"
+        >
+
+
+        <TextView
+            style="@style/TextViewCustomStyleLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:id="@+id/nameTextView"/>
+
+              <TextView
+                style="@style/TextViewCustomStyleMediumBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:id="@+id/dateTextView"
+                android:drawableLeft="@drawable/ic_alarm_black_24dp"
+                android:drawablePadding="2dp"/>
+
+
+        <TextView
+        style="@style/TextViewCustomStyleMediumBold"
+        android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:id="@+id/timeTextView"
+            android:drawableLeft="@drawable/ic_alarm_black_24dp"
+            android:drawablePadding="2dp"/>
+
+    </LinearLayout>
+</RelativeLayout>

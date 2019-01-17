@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1079269139685",
+    "firebase_url": "https://styfitask-1547457803787.firebaseio.com",
+    "project_id": "styfitask-1547457803787",
+    "storage_bucket": "styfitask-1547457803787.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079269139685:android:0a73a9b858c0e7bf",
+        "android_client_info": {
+          "package_name": "com.example.kunalparte.styfitask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079269139685-rh7b7q6ei6iq0oa2vamnbjbi5o11sk93.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kunalparte.styfitask",
+            "certificate_hash": "5b6bb2c0281c0d84e4b8d1b5c3316d8acbd3e3cc"
+          }
+        },
+        {
+          "client_id": "1079269139685-b3lcua43e5690eo0q2gmaghe4p96a6k6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAS_vxfS4p5owLknubwaMsp83azbggBDDc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1079269139685-b3lcua43e5690eo0q2gmaghe4p96a6k6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

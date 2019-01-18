@@ -15,6 +15,7 @@ import com.example.kunalparte.styfitask.DataList.adapters.DataItemListAdapter;
 import com.example.kunalparte.styfitask.DataList.interfaces.MainPresenterInterface;
 import com.example.kunalparte.styfitask.DataList.models.DataItem;
 import com.example.kunalparte.styfitask.R;
+import com.example.kunalparte.styfitask.Utils.AppPreferences;
 import com.example.kunalparte.styfitask.Utils.BaseActivity;
 import com.example.kunalparte.styfitask.Utils.Consts;
 import com.example.kunalparte.styfitask.Utils.ScrollToPaginateListener;
@@ -51,7 +52,7 @@ public class DataListActivity extends BaseActivity implements MainPresenterInter
     }
 
     public void init() {
-        getSupportActionBar().setTitle("Hello, " + getIntent().getStringExtra(Consts.NAME_KEY));
+        getSupportActionBar().setTitle("Hello, " + AppPreferences.getInstance(this).getName());
         dataRecyclerView = (RecyclerView) findViewById(R.id.dataList);
         progressBar = (ProgressBar) findViewById(R.id.footer);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLay);

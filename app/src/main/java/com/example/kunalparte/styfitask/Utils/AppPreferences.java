@@ -28,4 +28,12 @@ public class AppPreferences {
         return sharedPreferences.getString(Consts.LOGIN_TOKEN,"");
     }
 
+    public void setName(String name){
+        editor.putString(Consts.NAME_KEY,name).commit();
+    }
+
+    public String getName(){
+        return sharedPreferences.getString(Consts.NAME_KEY,"");
+    }
+
 }

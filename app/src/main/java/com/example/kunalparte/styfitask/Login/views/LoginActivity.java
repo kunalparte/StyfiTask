@@ -82,9 +82,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         if (result.isSuccess()) {
             GoogleSignInAccount account = result.getSignInAccount();
             AppPreferences.getInstance(this).setLoginToken(account.getId());
-            Intent intent = new Intent(this,DataListActivity.class);
-            intent.putExtra(Consts.NAME_KEY, account.getDisplayName());
-            startActivity(intent);
+            AppPreferences.getInstance(this).setName(account.getDisplayName());
+            startActivity(new Intent(this,DataListActivity.class));
             finish();
         }
     }
